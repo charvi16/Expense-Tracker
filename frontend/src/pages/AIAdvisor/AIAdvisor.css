@@ -1,0 +1,15 @@
+.ai-list{
+  display:flex;
+  flex-direction:column;
+  gap:2vh;
+  margin-top:4vh;
+}
+
+.ai-box{
+  background:var(--card-bg);
+  border-radius:1vw;
+  border:1px solid var(--card-border);
+  padding:2vh 2vw;
+  line-height:3vh;
+  font-size:1.1vw;
+}

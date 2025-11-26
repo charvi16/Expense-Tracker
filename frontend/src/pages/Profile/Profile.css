@@ -1,0 +1,71 @@
+.profile-page {
+  padding-top: 5vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.profile-center {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1.5vh;
+}
+
+.profile-photo {
+  width:12vh;
+  height:12vh;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,0.3);
+}
+
+.profile-name {
+  font-size:3vh;
+}
+
+.profile-edit-btn {
+  margin-top:1vh;
+  padding:1.2vh 2vw;
+  background:var(--primary);
+  color:white;
+  border:none;
+  border-radius:.8vw;
+  cursor:pointer;
+}
+
+.profile-form {
+  width:min(70vw,450px);
+  margin-top:4vh;
+  background:#0b1120;
+  padding:4vh 2vw;
+  border-radius:1vw;
+  display:flex;
+  flex-direction:column;
+  gap:2.5vh;
+}
+
+.profile-form input,
+.profile-form select {
+  padding:1.4vh 1vw;
+  border-radius:.7vw;
+  background:#020617;
+  color:white;
+}
+
+.profile-save-btn {
+  margin-top:2vh;
+  padding:1.5vh 2vw;
+  border:none;
+  border-radius:.8vw;
+  background:#00e676;
+  color:#050816;
+  font-size:1vw;
+  cursor:pointer;
+}
+
+@media(max-width:900px){
+  .profile-save-btn{
+    width:100%;
+  }
+}

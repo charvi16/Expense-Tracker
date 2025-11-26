@@ -1,0 +1,12 @@
+.budget-table{
+  margin-top:4vh;
+  width:100%;
+  border-collapse:collapse;
+  background:var(--card-bg);
+  border-radius:1vw;
+}
+
+th,td{
+  padding:1.5vh 1vw;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}

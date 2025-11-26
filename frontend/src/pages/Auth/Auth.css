@@ -1,0 +1,144 @@
+.auth-page {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 4vw;
+  margin-left: 4vw;
+  margin-right: 4vw;
+  min-height: 80vh;
+}
+
+.signup{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* LEFT SECTION */
+.auth-left h1 {
+  font-size: 3.6vw;
+  line-height: 4vw;
+  font-weight: 700;
+}
+
+.auth-left h1 span {
+  color: var(--primary);
+}
+
+.auth-left p {
+  margin-top: 1vh;
+  font-size: 1.2vw;
+  opacity: .7;
+}
+
+.auth-highlights {
+  margin-left : -1.5vw;
+  margin-top: 4vh;
+  display: flex;
+  gap: 2vw;
+}
+
+.auth-highlights div {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 2vh 1.4vw;
+  border-radius: .8vw;
+}
+
+.auth-highlights h3 {
+  font-size: 1.3vw;
+}
+
+.auth-highlights p {
+  font-size: .9vw;
+  opacity: .7;
+}
+
+
+/* RIGHT CARD */
+.auth-card {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 3vh 2.5vw;
+  border-radius: 1vw;
+}
+
+.auth-card h2 {
+  font-size: 3vw;
+  font-weight: 600;
+}
+
+/* FORM */
+.auth-form {
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25vw;
+  gap: .8vh;
+}
+
+.auth-form input {
+  font-size: .95vw;
+  height: 5vh;
+  border-radius: 6vh;
+  border: none;
+  outline: none;
+  padding-left: 1vw;
+}
+
+.btn-primary{
+  margin-top: 2vh;
+  height: 5vh;
+  border-radius: 6vh;
+  font-size: 3vh;
+  color: green;
+}
+
+
+/* BOTTOM TEXT */
+.switch {
+  margin-top: 2vh;
+  opacity: .7;
+  font-size: 1vw;
+}
+
+/* MOBILE */
+@media(max-width:900px) {
+  
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-left h1 {
+    font-size: 9vw;
+    line-height: 11vw;
+  }
+
+  .auth-left p {
+    font-size: 4vw;
+  }
+
+  .auth-highlights {
+    flex-direction: column;
+  }
+
+  .auth-card h2 {
+    font-size: 6vw;
+  }
+
+  .auth-form label {
+    font-size: 3.2vw;
+  }
+
+  .switch {
+    font-size: 3.2vw;
+  }
+}

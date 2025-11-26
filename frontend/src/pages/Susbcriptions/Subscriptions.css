@@ -1,0 +1,15 @@
+.sub-list{
+  display:flex;
+  flex-direction:column;
+  gap:2vh;
+  margin-top:4vh;
+}
+
+.sub-card{
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:1vw;
+  padding:2vh 2vw;
+  display:flex;
+  justify-content:space-between;
+}

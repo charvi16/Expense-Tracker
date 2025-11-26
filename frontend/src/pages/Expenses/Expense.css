@@ -1,0 +1,22 @@
+.expenses-page{
+  padding:20px;
+}
+
+.expenses-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.exp-item{
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  display:flex;
+  justify-content:space-between;
+}
+
+.empty-exp{
+  margin-top:30px;
+  opacity:0.6;
+}

@@ -1,0 +1,17 @@
+.cal-grid{
+  margin-top:3vh;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(9vw,1fr));
+  gap:1vw;
+}
+
+.day{
+  height:13vh;
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:.7vw;
+  padding:1vh 1vw;
+}
+
+.day span{opacity:.7;}
+.day p{opacity:.6;font-size:.9vw;}

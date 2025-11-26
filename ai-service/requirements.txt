@@ -1,0 +1,3 @@
+pip install flask fastapi uvicorn
+pip install scikit-learn numpy pandas joblib
+pip install transformers torch

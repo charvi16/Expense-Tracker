@@ -1,0 +1,143 @@
+.landing-page {
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
+}
+
+/* === GRID LAYOUT === */
+.hero {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4vw;
+  width: 100%;
+}
+
+
+/* LEFT SIDE */
+.hero-left h1 {
+  font-size: 3.8vw;
+  font-weight: 700;
+  line-height: 4.2vw;
+}
+
+.hero-left h1 span {
+  color: var(--primary);
+}
+
+.hero-sub {
+  margin-top: 2vh;
+  opacity: 0.75;
+  max-width: 42vw;
+  font-size: 1.15vw;
+}
+
+/* BUTTONS */
+.hero-buttons {
+  margin-top: 3vh;
+  display: flex;
+  gap: 1.5vw;
+}
+
+
+/* STATS BOXES */
+.hero-stats {
+  margin-top: 4vh;
+  display: flex;
+  gap: 3vw;
+}
+
+.stat h3 {
+  font-size: 1.8vw;
+}
+
+.stat p {
+  font-size: 1vw;
+  opacity: .65;
+}
+
+
+/* RIGHT SIDE */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2vh;
+}
+
+/* CARDS */
+.card-block {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1vw;
+  backdrop-filter: blur(12px);
+  padding: 2vh 2vw;
+  width: 100%;
+}
+
+.card-block.big {
+  height: 27vh;
+}
+
+.card-block.small {
+  height: 15vh;
+}
+
+.hero-small-cards {
+  display: flex;
+  gap: 1vw;
+  width: 100%;
+}
+
+.label {
+  font-size: .95vw;
+  opacity: .7;
+}
+
+.muted {
+  margin-top: 1vh;
+  opacity: .55;
+  font-size: .9vw;
+}
+
+
+/* === MOBILE RESPONSIVE === */
+@media (max-width: 900px) {
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-left h1 {
+    font-size: 8.5vw;
+    line-height: 10vw;
+  }
+
+  .hero-sub {
+    font-size: 3.5vw;
+    max-width: 90vw;
+  }
+
+  .hero-stats {
+    flex-wrap: wrap;
+  }
+
+  .stat h3 {
+    font-size: 6vw;
+  }
+
+  .stat p {
+    font-size: 3vw;
+  }
+
+  .hero-small-cards {
+    flex-direction: column;
+  }
+
+  .card-block.big {
+    height: auto;
+  }
+
+  .card-block.small {
+    height: auto;
+  }
+}

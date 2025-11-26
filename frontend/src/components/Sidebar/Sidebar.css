@@ -1,0 +1,29 @@
+.sidebar {
+  width: 17vw;
+  height: 100vh;
+  background: rgba(255,255,255,0.03);
+  border-right: 1px solid rgba(255,255,255,0.1);
+  padding: 2vh 2vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  position: fixed;
+  top: 9vh;
+}
+
+.sidebar a {
+  opacity: .7;
+  font-size: 1.1vw;
+  transition: .3s;
+}
+
+.sidebar a:hover {
+  opacity: 1;
+  color: var(--primary);
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+}

@@ -1,0 +1,27 @@
+.add-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+}
+
+.add-modal{
+  width:420px;
+  background:#fff;
+  padding:25px;
+  border-radius:12px;
+  position:relative;
+}
+
+.add-close{
+  position:absolute;
+  right:15px;
+  top:10px;
+  background:none;
+  border:none;
+  font-size:29px;
+  cursor:pointer;
+}

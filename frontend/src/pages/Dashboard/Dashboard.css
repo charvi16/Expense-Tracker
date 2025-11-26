@@ -1,0 +1,190 @@
+.dashboard{
+margin-top: 5vh;
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+
+.dashboard h1 {
+  font-size: 3vw;
+}
+
+.dashboard p {
+  opacity: .7;
+}
+
+/* HEADER */
+.dash-header {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:3vw;
+}
+
+/* SUMMARY */
+.summary-grid {
+  display:flex;
+  gap:1.5vw;
+}
+
+.summary-card {
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  padding:2vh 2vw;
+  border-radius:1vw;
+  min-width:14vw;
+}
+
+.summary-card span {
+  opacity:.6;
+  font-size:1vw;
+}
+
+.summary-card h3 {
+  font-size:1.8vw;
+  margin-top:1vh;
+}
+
+
+/* KPI AREA */
+.kpi-grid {
+  width:100%;
+  display:grid;
+  margin-top:4vh;
+  gap:2vw;
+  grid-template-columns:repeat(auto-fit,minmax(20vw,1fr));
+}
+
+.kpi-card {
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:1vw;
+  padding:2vh 2vw;
+}
+
+.kpi-card h3 {
+  font-size:1.35vw;
+  opacity:.8;
+}
+
+.kpi-card p {
+  margin-top:1vh;
+  font-size:1.7vw;
+}
+
+.kpi-card span {
+  color:var(--secondary);
+}
+
+
+/* BOTTOM SECTION */
+.dash-bottom {
+  margin-top:4vh;
+  display:grid;
+  gap:2vw;
+  grid-template-columns:1.3fr .7fr;
+}
+
+
+.add-btn{
+  padding:1.2vh 2vw;
+  background:var(--primary);
+  color:white;
+  border:none;
+  border-radius:.8vw;
+  cursor:pointer;
+}
+
+
+
+/* CARDS */
+.dash-card {
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:1vw;
+  padding:2.2vh 2vw;
+}
+
+.dash-card h2 {
+  font-size:1.6vw;
+}
+
+.tall {
+  height:38vh;
+}
+
+/* placeholder chart */
+.chart-placeholder {
+  height:28vh;
+  background:rgba(255,255,255,.05);
+  border-radius:.9vw;
+  margin-top:2vh;
+}
+
+
+/* AI notes */
+.ai-note {
+  margin-top:1.2vh;
+  background:rgba(255,255,255,.05);
+  padding:1.4vh 1vw;
+  border-radius:.7vw;
+}
+
+.ai-note span {
+  color:var(--primary);
+  font-weight:600;
+}
+
+.green {
+  color:#22c55e;
+  font-weight:700;
+}
+
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+  .dash-header {
+    flex-direction:column;
+  }
+
+  .summary-grid{
+    flex-direction:column;
+  }
+
+  .kpi-grid{
+    grid-template-columns:1fr;
+  }
+
+  .dash-bottom{
+    grid-template-columns:1fr;
+  }
+
+  .dashboard h1{
+    font-size:8vw;
+  }
+
+  .summary-card h3{
+    font-size:5vw;
+  }
+
+  .kpi-card h3{
+    font-size:5vw;
+  }
+
+  .kpi-card p{
+    font-size:6vw;
+  }
+}
+
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+}
+
+* {
+  -ms-overflow-style: none;
+}
