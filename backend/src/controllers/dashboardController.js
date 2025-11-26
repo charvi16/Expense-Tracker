@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import Expense from "../models/Expense.js";
+import Subscriptions from "../models/Subscriptions.js";
 import groq from "../config/groqClient.js";
 
 async function generateAiInsights(summary) {
@@ -68,10 +69,33 @@ export const getDashboardData = async (req, res) => {
       topCategory = Object.entries(catTotals).sort((a, b) => b[1] - a[1])[0][0];
     }
 
+    const subs = await Subscriptions.find({
+      user: req.user._id,
+      active: true
+    });
+
+    const today = new Date();
+    const threeDays = 3 * 24 * 60 * 60 * 1000;
+
+    const upcomingBills = subs.filter(s => {
+    const diff = new Date(s.nextBillingDate) - today;
+    return diff > 0 && diff <= threeDays;
+    });
+
+    let subscriptionMonthlyTotal = 0;
+
+    subs.forEach(sub => {
+      if (sub.billingCycle === "monthly") subscriptionMonthlyTotal += sub.amount;
+      if (sub.billingCycle === "weekly") subscriptionMonthlyTotal += sub.amount * 4;
+      if (sub.billingCycle === "yearly") subscriptionMonthlyTotal += sub.amount / 12;
+    });
+
+    const totalSpendIncludingSubs = monthSpend + subscriptionMonthlyTotal;
+
     // Avg daily spend (till today)
     const daysPassed = now.getDate();
     const totalDays = endOfMonth.getDate();
-    const avgDaily = daysPassed > 0 ? monthSpend / daysPassed : 0;
+    const avgDaily = daysPassed > 0 ? totalSpendIncludingSubs / daysPassed : 0;
 
     // Expected month end spend (projection)
     const monthEndExpected = avgDaily * totalDays;
@@ -82,7 +106,7 @@ export const getDashboardData = async (req, res) => {
     const projectedSavings =
       monthlyBudget > 0 ? monthlyBudget - monthEndExpected : null;
 
-    const totalBalance = monthlyIncome - monthSpend;
+    const totalBalance = monthlyIncome - totalSpendIncludingSubs;
 
     // Build a summary object for AI
     const summary = {
@@ -116,7 +140,10 @@ export const getDashboardData = async (req, res) => {
     res.json({
       totalBalance,
       monthlyBudget,
-      monthSpend,
+      monthSpend : totalSpendIncludingSubs,
+      subscriptions : subs,
+      subscriptionMonthlyTotal,
+      upcomingBills,
       topCategory,
       avgDaily: Number(avgDaily.toFixed(2)),
       monthEndExpected: Number(monthEndExpected.toFixed(2)),

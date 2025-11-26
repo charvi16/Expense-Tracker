@@ -20,7 +20,16 @@ const { data, loading } = useFetch("/dashboard?refresh="+refreshKey);
 
   return (
     <main className="page dashboard">
-
+      {/* {data?.upcomingBills?.length > 0 && (
+        <div className="dash-alert">
+          {data.upcomingBills.map((b) => (
+            <p key={b._id}>
+              ⚠️ {b.name} renews on{" "}
+              {b.nextBillingDate.slice(0,10)} (₹{b.amount})
+            </p>
+          ))}
+        </div>
+      )} */}
       {/* TOP SECTION */}
       <section className="dash-header">
         
@@ -101,13 +110,6 @@ const { data, loading } = useFetch("/dashboard?refresh="+refreshKey);
 
         <div className="dash-card">
           <h2>AI Insights</h2>
-
-          {/* {data.aiInsights.map((i,idx)=>(
-            <p key={idx} className="ai-note">
-              {i}
-            </p>
-          ))} */}
-
           {data?.aiInsights?.length > 0 
             ? data.aiInsights.map((i,idx)=>(
                 <p key={idx} className="ai-note">{i}</p>
@@ -118,6 +120,42 @@ const { data, loading } = useFetch("/dashboard?refresh="+refreshKey);
 
         </div>
 
+        <div className="dash-card">
+          <h2>Subscriptions</h2>
+
+          {(!data?.subscriptions || data.subscriptions.length === 0) && (
+            <p>No subscriptions yet</p>
+          )}
+
+          {data?.subscriptions?.length > 0 && (
+            <div>
+              {data.subscriptions.map(sub => (
+                <p key={sub._id}>
+                  {sub.name} — ₹{sub.amount} ({sub.billingCycle})
+                </p>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="dash-card">
+          <h2>Notifications</h2>
+
+          {(!data?.upcomingBills || data.upcomingBills.length === 0) && (
+            <p>No upcoming bills in the next 7 days</p>
+          )}
+
+          {data?.upcomingBills?.length > 0 && (
+            <div>
+              {data.upcomingBills.map((b) => (
+                <p key={b._id}>
+                  {b.name} – ₹{b.amount} due on{" "}
+                  {new Date(b.nextBillingDate).toISOString().slice(0, 10)}
+                </p>
+              ))}
+            </div>
+          )}
+        </div>
       </section>
     </main>
   );

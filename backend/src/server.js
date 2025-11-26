@@ -6,7 +6,9 @@ console.log("LOADED GROQ KEY =", process.env.GROQ_API_KEY);
 
 import http from 'http';
 import app from './app.js';
-import "../src/cron/subscriptionCron.js";
+import "../src/cron/subscriptionBillingCron.js";
+import "../src/cron/monthlyReportCron.js";
+
 
 const PORT = process.env.PORT || 5000;
 

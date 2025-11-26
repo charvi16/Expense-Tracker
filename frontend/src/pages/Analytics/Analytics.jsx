@@ -1,5 +1,6 @@
 import useFetch from "../../hooks/useFetch";
 import "./Analytics.css";
+import SubscriptionChart from "../../components/Charts/SubscriptionChart";
 
 import {
   Chart as ChartJS,
@@ -30,6 +31,7 @@ export default function Analytics() {
   const { data, loading } = useFetch("/analytics");
 
   if (loading) return <main className="page analytics-page">Loading...</main>;
+  if (!data) return <main className="page">No analytics found</main>;
 
   const monthly = data?.monthlySpendingChart || {};
   const categories = data?.categoryChart || {};
@@ -191,6 +193,15 @@ export default function Analytics() {
           <h2>Daily Spend Trend (Last 30 days)</h2>
           <Line data={dailyData} options={lineOptions} />
         </div>
+      </section>
+
+      <section className="row">
+        {data?.subscriptionChart && (
+          <div className="chart-card">
+            <h3>Subscriptions Chart</h3>
+            <SubscriptionChart data={data.subscriptionChart} />
+          </div>
+        )}
       </section>
 
     </main>

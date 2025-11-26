@@ -11,6 +11,21 @@ export default function Profile() {
 
   const refreshKey = localStorage.getItem("refreshProfile");
 
+  const [subscription, setSubscription] = useState({
+  subName: "",
+  subAmount: "",
+  subCycle: "monthly",
+  subDate: ""
+});
+
+function handleSubscriptionChange(e) {
+  setSubscription({
+    ...subscription,
+    [e.target.name]: e.target.value
+  });
+}
+
+
   useEffect(() => {
     API.get("/profile")
       .then(res => setProfile(res.data))
@@ -48,6 +63,35 @@ export default function Profile() {
     refreshUser();
   }
 
+  async function addSubscription() {
+  try {
+    await API.post("/subscriptions", {
+      name: subscription.subName,
+      amount: subscription.subAmount,
+      billingCycle: subscription.subCycle,
+      nextBillingDate: subscription.subDate
+    });
+
+    // reset
+    setSubscription({
+      subName: "",
+      subAmount: "",
+      subCycle: "monthly",
+      subDate: ""
+    });
+
+    localStorage.setItem("refresh", Date.now());
+    localStorage.setItem("refreshExpenses", Date.now());
+
+    alert("Subscription added!");
+  } catch (err) {
+    console.error("ADD SUB ERROR:", err);
+    alert("Subscription failed");
+  }
+}
+
+
+
 
   if(!profile)
     return <main className="page profile-page">Loading...</main>
@@ -72,6 +116,17 @@ export default function Profile() {
             Edit Profile
           </button>
         )}
+
+        <button
+          type="button"
+          className="profile-save-btn"
+          onClick={async () => {
+            await API.post("/reports/send-now");
+            alert("Monthly report email sent!");
+          }}
+        >
+          Send Monthly Report Now
+        </button>
 
       </div>
 
@@ -125,6 +180,54 @@ export default function Profile() {
               onChange={handleChange}
             />
           </label>
+
+          <h3>Subscriptions</h3>
+
+          <div className="subs-block">
+
+            <label>
+              Name
+              <input name="subName" value={subscription.subName}
+                onChange={handleSubscriptionChange} 
+                required />
+            </label>
+
+            <label>
+              Amount ₹
+              <input 
+              type="number" 
+                name="subAmount"
+                value={subscription.subAmount}
+                onChange={handleSubscriptionChange}
+                required
+              />
+            </label>
+
+            <label>
+              Billing Cycle
+              <select name="subCycle"
+      value={subscription.subCycle}
+      onChange={handleSubscriptionChange}>
+                <option>monthly</option>
+                <option>weekly</option>
+                <option>yearly</option>
+              </select>
+            </label>
+
+            <label>
+              Next Billing Date
+              <input type="date" name="subDate"
+      value={subscription.subDate}
+      onChange={handleSubscriptionChange}
+      required />
+            </label>
+
+            <button type="button" className="profile-save-btn" onClick={addSubscription}>
+              Add Subscription
+            </button>
+
+          </div>
+
 
           <button type="submit" className="profile-save-btn">
             Save Changes

@@ -1,4 +1,5 @@
 import Expense from "../models/Expense.js";
+import Subscriptions from "../models/Subscriptions.js";
 
 export const getAnalytics = async (req, res) => {
   try {
@@ -30,6 +31,17 @@ export const getAnalytics = async (req, res) => {
       daily[key] = (daily[key] || 0) + e.amount;
     });
 
+    const subs = await Subscriptions.find({
+      user: req.user._id,
+      active: true
+    });
+
+    // subscription cost breakdown
+    const subscriptionChart = subs.reduce((acc, s) => {
+      acc[s.name] = (acc[s.name] || 0) + s.amount;
+      return acc;
+    }, {});
+
     // ----- payment method distribution -----
     const methods = {};
     expenses.forEach((e) => {
@@ -42,6 +54,7 @@ export const getAnalytics = async (req, res) => {
       categoryChart: categories,
       dailyTrendChart: daily,
       paymentMethodChart: methods,
+      subscriptionChart : monthly
     });
   } catch (err) {
     console.error("ANALYTICS ERROR:", err);
