@@ -48,6 +48,10 @@ export const getDashboardData = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
 
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
     const now = new Date();
     const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
     const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
@@ -150,9 +154,10 @@ export const getDashboardData = async (req, res) => {
       projectedSavings:
         projectedSavings !== null ? Number(projectedSavings.toFixed(2)) : null,
       aiInsights, // 👈 ACTUAL AI-GENERATED INSIGHTS
+      expenses: expenses, // 👈 ADD EXPENSES DATA
     });
   } catch (err) {
     console.error("DASHBOARD ERROR:", err);
-    res.status(500).json({ message: "Dashboard fetch failed" });
+    res.status(500).json({ message: "Dashboard fetch failed", error: err.message });
   }
 };

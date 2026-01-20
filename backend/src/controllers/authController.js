@@ -9,6 +9,7 @@ export const registerUser = async (req, res) => {
 
   // Basic validation
   if (!name || !email || !password) {
+    console.log("Validation failed - missing fields");
     return res.status(400).json({ message: "Please provide name, email, and password" });
   }
 
@@ -23,17 +24,21 @@ export const registerUser = async (req, res) => {
     // Create new user (password will be hashed in User model pre-save hook)
     const user = await User.create({ name, email, password });
 
-    console.log("User created successfully:", user); // ✅ debug new user
+    console.log("User created successfully:", user._id); // ✅ debug new user
+
+    const token = generateToken(user._id);
+    console.log("Token generated:", token ? "yes" : "no");
 
     res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id)
+      token: token
     });
   } catch (err) {
-    console.error("Registration error:", err); // ✅ detailed error
-    res.status(500).json({ message: 'Registration failed' });
+    console.error("Registration error:", err.message); // ✅ detailed error
+    console.error("Stack:", err.stack);
+    res.status(500).json({ message: 'Registration failed: ' + err.message });
   }
 };
 
@@ -44,6 +49,7 @@ export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
+    console.log("Login validation failed - missing email or password");
     return res.status(400).json({ message: "Please provide email and password" });
   }
 
@@ -62,17 +68,19 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
+    const token = generateToken(user._id);
     console.log("Login successful for user:", email);
 
     res.json({
       _id: user._id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id)
+      token: token
     });
   } catch (err) {
-    console.error("Login error:", err);
-    res.status(500).json({ message: 'Login failed' });
+    console.error("Login error:", err.message);
+    console.error("Stack:", err.stack);
+    res.status(500).json({ message: 'Login failed: ' + err.message });
   }
 };
 

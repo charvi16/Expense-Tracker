@@ -20,12 +20,11 @@ import reportRoutes from "./routes/reportRoutes.js";
 import calendarRoutes from "./routes/calendarRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 
-
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
-
 
 const app = express();
 
+// Middleware
 app.use(cors({
   origin: process.env.CLIENT_URL || "http://localhost:5173",
   credentials: true
@@ -35,12 +34,11 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 app.use("/uploads", express.static("uploads"));
 
-
+// Routes
 app.get('/', (req, res) => {
   res.send('FinTrackAI API running');
 });
 
-// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/expenses', expenseRoutes);
 app.use('/api/budgets', budgetRoutes);
@@ -49,7 +47,7 @@ app.use('/api/bills', billRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use('/api/ai', aiRoutes);
 app.use("/api/profile", profileRoutes);
-app.use("/api/reports", reportRoutes);   
+app.use("/api/reports", reportRoutes);
 app.use("/api/calendar", calendarRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
