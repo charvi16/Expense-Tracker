@@ -14,10 +14,103 @@ margin-top: 5vh;
 
 /* HEADER */
 .dash-header {
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:3vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2vw;
+  margin-bottom: 3vh;
+  flex-wrap: wrap;
+}
+
+.dash-title-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.dashboard h1 {
+  font-size: 3vw;
+  margin: 0 0 0.5vh 0;
+}
+
+.dashboard p {
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* Profile Quick View */
+.profile-quick-view {
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+  background: linear-gradient(135deg, #0b1120 0%, #1a1f2e 100%);
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  border-radius: 1vw;
+  padding: 1.5vh 2vw;
+  min-width: 280px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.profile-quick-view:hover {
+  border-color: rgba(45, 212, 191, 0.4);
+  box-shadow: 0 8px 32px rgba(45, 212, 191, 0.15);
+}
+
+.profile-quick-image {
+  flex-shrink: 0;
+}
+
+.profile-quick-image img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2dd4bf;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.profile-quick-image img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 16px rgba(45, 212, 191, 0.4);
+}
+
+.profile-quick-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3vh;
+  flex: 1;
+}
+
+.profile-quick-name {
+  font-weight: 700;
+  font-size: 1.1vw;
+  color: #e9eef3;
+  margin: 0;
+}
+
+.profile-quick-email {
+  font-size: 0.9vw;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.profile-quick-btn {
+  background: transparent;
+  color: #2dd4bf;
+  border: none;
+  padding: 0;
+  font-size: 0.85vw;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.3vh;
+  text-align: left;
+}
+
+.profile-quick-btn:hover {
+  color: #00e676;
+  transform: translateX(2px);
 }
 
 /* SUMMARY */
@@ -141,38 +234,71 @@ margin-top: 5vh;
 
 
 /* RESPONSIVE */
-@media(max-width:900px){
-
+@media(max-width: 900px) {
   .dash-header {
-    flex-direction:column;
+    flex-direction: column;
   }
 
-  .summary-grid{
-    flex-direction:column;
+  .dash-title-section {
+    width: 100%;
   }
 
-  .kpi-grid{
-    grid-template-columns:1fr;
+  .profile-quick-view {
+    width: 100%;
+    min-width: unset;
   }
 
-  .dash-bottom{
-    grid-template-columns:1fr;
+  .summary-grid {
+    flex-direction: column;
   }
 
-  .dashboard h1{
-    font-size:8vw;
+  .kpi-grid {
+    grid-template-columns: 1fr;
   }
 
-  .summary-card h3{
-    font-size:5vw;
+  .dash-bottom {
+    grid-template-columns: 1fr;
   }
 
-  .kpi-card h3{
-    font-size:5vw;
+  .dashboard h1 {
+    font-size: 8vw;
   }
 
-  .kpi-card p{
-    font-size:6vw;
+  .summary-card h3 {
+    font-size: 5vw;
+  }
+
+  .kpi-card h3 {
+    font-size: 5vw;
+  }
+
+  .kpi-card p {
+    font-size: 6vw;
+  }
+
+  .profile-quick-view {
+    padding: 1.2vh 1.5vw;
+  }
+
+  .profile-quick-image img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .profile-quick-name {
+    font-size: 1.3vw;
+  }
+
+  .profile-quick-email {
+    font-size: 1vw;
+  }
+
+  .profile-quick-btn {
+    font-size: 0.95vw;
+  }
+
+  .add-btn {
+    width: 100%;
   }
 }
 

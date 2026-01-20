@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./Dashboard.css";
 import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import ExpenseTrendChart from "../../components/Charts/ExpenseTrendChart";
 
 export default function Dashboard() {
 const [showExpenseModal, setShowExpenseModal] = useState(false);
+const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -33,9 +35,29 @@ const { data, loading } = useFetch("/dashboard?refresh="+refreshKey);
       {/* TOP SECTION */}
       <section className="dash-header">
         
-        <div>
+        <div className="dash-title-section">
           <h1>Dashboard</h1>
           <p>Your financial overview at a glance</p>
+        </div>
+
+        <div className="profile-quick-view">
+          <div className="profile-quick-image">
+            <img 
+              src={user?.image || "/default-profile.png"}
+              alt="Profile"
+              onClick={() => navigate("/profile")}
+            />
+          </div>
+          <div className="profile-quick-info">
+            <p className="profile-quick-name">{user?.name}</p>
+            <p className="profile-quick-email">{user?.email}</p>
+            <button 
+              className="profile-quick-btn"
+              onClick={() => navigate("/profile")}
+            >
+              View Profile →
+            </button>
+          </div>
         </div>
 
         <button 

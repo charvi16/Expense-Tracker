@@ -7,9 +7,11 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     googleId: { type: String },
+    image: { type: String, default: "/default-profile.png" },
     currency: { type: String, default: "INR" },
-    monthlyIncome: { type: Number, default: 0 },
+    income: { type: Number, default: 0 },
     monthlyBudget: { type: Number, default: 0 },
+    monthlyIncome: { type: Number, default: 0 },
     settings: {
       theme: { type: String, default: "dark" },
       notifications: { type: Boolean, default: true },

@@ -12,6 +12,7 @@ export const updateProfile = async (req, res) => {
   req.user.name = name ?? req.user.name;
   req.user.currency = currency ?? req.user.currency;
   req.user.monthlyBudget = monthlyBudget ?? req.user.monthlyBudget;
+  req.user.income = income ?? req.user.income;
   req.user.monthlyIncome = income ?? req.user.monthlyIncome;
 
   await req.user.save();
