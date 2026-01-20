@@ -3,7 +3,7 @@ import "./Footer.css";
 export default function Footer() {
   return (
     <footer className="footer">
-      © {new Date().getFullYear()} FinTrackAI — All rights reserved.
+      © {new Date().getFullYear()} ET— All rights reserved.
     </footer>
   );
 }

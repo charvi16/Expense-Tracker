@@ -59,7 +59,7 @@ function handleSubscriptionChange(e) {
       headers: { "Content-Type": "multipart/form-data" }
     });
 
-    setProfile(prev=>({...profile, image: res.data.image}));
+    setProfile(prev=>({...prev, image: res.data.image}));
     refreshUser();
   }
 

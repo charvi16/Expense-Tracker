@@ -37,7 +37,7 @@ useEffect(() => {
 })
   }, [refreshUser]);
 
-  if (!user || !profile) return null;
+  if (!user) return null;
 
   return (
   <nav className="navbar">
@@ -56,11 +56,23 @@ useEffect(() => {
     <div className="nav-auth">
 
   <div className="avatar-wrapper" ref={menuRef}>
-    <img 
-      src={profile.image || "/default-profile.png"}
-      className="nav-avatar"
-      onClick={() => setOpenMenu(!openMenu)}
-    />
+    <img
+        src={
+          profile?.image &&
+          profile.image !== "null" &&
+          profile.image !== "undefined" &&
+          profile.image.trim() !== ""
+            ? profile.image
+            : "/default-avatar.webp"
+        }
+        className="nav-avatar"
+        alt="User Avatar"
+        onClick={() => setOpenMenu(!openMenu)}
+        onError={(e) => {
+          e.currentTarget.src = "/default-avatar.webp";
+        }}
+      />
+
 
     <div className={`dropdown-menu ${openMenu ? "show" : ""}`}>
       <Link to="/profile" onClick={()=>setOpenMenu(false)}>Profile</Link>

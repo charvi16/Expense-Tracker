@@ -84,7 +84,7 @@ export default function Signup() {
             />
           </label>
 
-          <button className="btn-primary auth-btn" disabled={loading}>
+          <button className="btn-primary auth-btn signup-btn"  disabled={loading}>
             {loading ? "Creating..." : "Create Account"}
           </button>
 

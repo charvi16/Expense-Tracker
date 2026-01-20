@@ -6,6 +6,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import connectDB from './config/db.js';
+import path from 'path';
 connectDB();
 
 import analyticsRoutes from './routes/analyticsRoutes.js';
@@ -33,7 +34,8 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan('dev'));
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+
 
 
 app.get('/', (req, res) => {
@@ -52,6 +54,9 @@ app.use("/api/profile", profileRoutes);
 app.use("/api/reports", reportRoutes);   
 app.use("/api/calendar", calendarRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+
+
+
 
 // Error handlers
 app.use(notFound);

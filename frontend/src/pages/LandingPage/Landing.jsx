@@ -5,6 +5,11 @@ export default function Landing() {
   return (
     <main className="page landing-page">
 
+      <div className="landing-logo">
+        <Link to="/">
+          <img src="/logo.png" alt="App Logo" />
+        </Link>
+      </div>
       <section className="hero">
         
         <div className="hero-left">
@@ -19,7 +24,7 @@ export default function Landing() {
           </p>
 
           <div className="hero-buttons">
-            <Link to="/signup" className="btn btn-primary">
+            <Link to="/signup" className="btn sign-btn">
               Create Account
             </Link>
 

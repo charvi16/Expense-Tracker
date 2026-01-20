@@ -10,6 +10,10 @@ const userSchema = new mongoose.Schema(
     currency: { type: String, default: "INR" },
     monthlyIncome: { type: Number, default: 0 },
     monthlyBudget: { type: Number, default: 0 },
+    image: {
+    type: String,
+    default: "/default-profile.png"
+    },
     settings: {
       theme: { type: String, default: "dark" },
       notifications: { type: Boolean, default: true },

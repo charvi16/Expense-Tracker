@@ -90,7 +90,7 @@ export default function Login() {
             />
           </label>
 
-          <button className="btn btn-primary" disabled={loading}>
+          <button className="btn btn-primary login-btn" disabled={loading}>
             {loading ? "Logging in..." : "Login"}
           </button>
           

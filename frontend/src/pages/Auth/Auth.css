@@ -9,6 +9,7 @@
 }
 
 .signup{
+  /* width: 50vw; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,6 +56,10 @@
   opacity: .7;
 }
 
+.auth-container{
+  width: 50vh;
+
+}
 
 /* RIGHT CARD */
 .auth-card {
@@ -102,12 +107,27 @@
   color: green;
 }
 
+.login-btn{
+  color: #0b0f14;
+}
+
+.signup-btn{
+  color: #0b0f14;
+  outline: none;
+  border: none;
+}
+
+.switch-line{
+  margin-top: 2vh;
+}
+
 
 /* BOTTOM TEXT */
 .switch {
-  margin-top: 2vh;
+  margin-top: 4vh;
   opacity: .7;
-  font-size: 1vw;
+  font-size: 1.1vw;
+  margin-left: 0.5vw;
 }
 
 /* MOBILE */

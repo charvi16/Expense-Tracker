@@ -1,8 +1,19 @@
 .landing-page {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  flex-direction: column;
   min-height: 80vh;
 }
+
+.landing-logo {
+  padding: 3vh;
+}
+
+.landing-logo img {
+  height: 13vh;
+  width: auto;
+}
+
 
 /* === GRID LAYOUT === */
 .hero {
@@ -10,10 +21,14 @@
   grid-template-columns: 1.4fr 1fr;
   gap: 4vw;
   width: 100%;
+  margin-top: 12vh;
 }
 
-
 /* LEFT SIDE */
+.hero-left{
+  margin-left: 3vw;
+}
+
 .hero-left h1 {
   font-size: 3.8vw;
   font-weight: 700;
@@ -48,6 +63,7 @@
 
 .stat h3 {
   font-size: 1.8vw;
+  color: #5DB22F;
 }
 
 .stat p {
@@ -97,6 +113,10 @@
   margin-top: 1vh;
   opacity: .55;
   font-size: .9vw;
+}
+
+.big h2{
+  color: #429836;
 }
 
 
