@@ -7,6 +7,7 @@ import "./Navbar.css";
 export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
   const [profile, setProfile] = useState(null);
+  const [logoError, setLogoError] = useState(false);
 
   const refreshUser = localStorage.getItem("refreshUser");
 
@@ -43,7 +44,17 @@ useEffect(() => {
   <nav className="navbar">
 
     <div className="nav-logo">
-      FinTrack<span>AI</span>
+      {!logoError ? (
+        <img 
+          src="/fintrackAI-logo.svg" 
+          alt="FinTrackAI Logo" 
+          className="logo-img"
+          onError={() => setLogoError(true)}
+        />
+      ) : (
+        <div className="logo-fallback">📊</div>
+      )}
+      <span>FinTrack<span>AI</span></span>
     </div>
 
     <div className="nav-links">

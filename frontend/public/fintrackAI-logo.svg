@@ -1,0 +1,38 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradientStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2dd4bf;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00b86c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradientFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2dd4bf;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00e676;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="url(#gradientStroke)" stroke-width="2"/>
+  
+  <!-- Chart bars (ascending) -->
+  <rect x="45" y="115" width="14" height="35" fill="url(#gradientFill)" rx="3"/>
+  <rect x="65" y="95" width="14" height="55" fill="url(#gradientFill)" rx="3"/>
+  <rect x="85" y="70" width="14" height="80" fill="url(#gradientFill)" rx="3"/>
+  <rect x="105" y="45" width="14" height="105" fill="url(#gradientFill)" rx="3"/>
+  <rect x="125" y="65" width="14" height="85" fill="url(#gradientFill)" rx="3"/>
+  
+  <!-- AI symbol (brain/neural) -->
+  <g transform="translate(100, 35)">
+    <!-- Neural network dots -->
+    <circle cx="-10" cy="-3" r="3" fill="#2dd4bf"/>
+    <circle cx="10" cy="-3" r="3" fill="#2dd4bf"/>
+    <circle cx="0" cy="8" r="3" fill="#00e676"/>
+    <!-- Connecting lines -->
+    <line x1="-10" y1="-3" x2="0" y2="8" stroke="#2dd4bf" stroke-width="1.5" opacity="0.8"/>
+    <line x1="10" y1="-3" x2="0" y2="8" stroke="#2dd4bf" stroke-width="1.5" opacity="0.8"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="100" y="168" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="url(#gradientFill)">
+    FinTrackAI
+  </text>
+</svg>

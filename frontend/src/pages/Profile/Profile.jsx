@@ -11,6 +11,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [saveLoading, setSaveLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   const refreshKey = localStorage.getItem("refreshProfile");
 
@@ -68,15 +69,26 @@ function handleSubscriptionChange(e) {
     const file = e.target.files[0];
     if(!file) return;
 
+    setUploading(true);
     const form = new FormData();
     form.append("image", file);
 
-    const res = await API.put("/profile/photo", form, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    try {
+      const res = await API.put("/profile/photo", form, {
+        headers: { "Content-Type": "multipart/form-data" }
+      });
 
-    setProfile(prev=>({...profile, image: res.data.image}));
-    refreshUser();
+      setProfile(prev=>({...profile, image: res.data.image}));
+      setSuccessMessage("Profile picture updated successfully!");
+      setTimeout(() => setSuccessMessage(""), 3000);
+      refreshUser();
+    } catch(err) {
+      console.error("Upload error:", err);
+      setSuccessMessage("Failed to upload picture");
+      setTimeout(() => setSuccessMessage(""), 3000);
+    } finally {
+      setUploading(false);
+    }
   }
 
   async function addSubscription() {
@@ -126,12 +138,16 @@ function handleSubscriptionChange(e) {
               className="profile-photo"
               alt="Profile"
             />
-            {editMode && (
-              <label className="photo-upload-label">
-                <input type="file" name="image" onChange={uploadPhoto} />
-                <span>✎</span>
-              </label>
-            )}
+            <label className="photo-upload-label" title="Click to upload profile picture">
+              <input 
+                type="file" 
+                name="image" 
+                onChange={uploadPhoto}
+                disabled={uploading}
+                accept="image/*"
+              />
+              <span>{uploading ? '⏳' : '✎'}</span>
+            </label>
           </div>
 
           <div className="profile-info">

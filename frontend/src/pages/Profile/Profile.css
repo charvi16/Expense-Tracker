@@ -74,28 +74,38 @@
   position: absolute;
   bottom: -5px;
   right: -5px;
-  background: #00e676;
-  width: 40px;
-  height: 40px;
+  background: linear-gradient(135deg, #00e676 0%, #2dd4bf 100%);
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   color: #050816;
-  font-weight: 600;
+  font-weight: 700;
   border: 3px solid #0b1120;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 230, 118, 0.4);
 }
 
 .photo-upload-label:hover {
-  background: #2dd4bf;
-  transform: scale(1.1);
+  background: linear-gradient(135deg, #2dd4bf 0%, #00e676 100%);
+  transform: scale(1.15);
+  box-shadow: 0 6px 20px rgba(45, 212, 191, 0.5);
+}
+
+.photo-upload-label:active {
+  transform: scale(0.95);
 }
 
 .photo-upload-label input {
   display: none;
+}
+
+.photo-upload-label input:disabled {
+  cursor: not-allowed;
 }
 
 .profile-info {
